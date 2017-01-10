@@ -1,2 +1,2 @@
 # johnkmaxi.github.io
-House Prices competition on Kaggle
+Learning to make a webpage on GitHub
