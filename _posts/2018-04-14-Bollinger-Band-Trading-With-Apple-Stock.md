@@ -1,4 +1,10 @@
-
+---
+Title: Testing a Bollinger Band Trading Strategy
+Date: 2018-04-14 23:27
+Category: Finance
+Tags: python, finance, apple, oop
+Author: John Maxi
+---
 ### Using Bollinger Bands as Trading Strategy?
 
 I recently learned about Bollinger Bands as stock metric. Bollinger Bands show the volaltility of the stock. The bands themselves show the price that is two standard deviations above and below the 20 day rolling mean stock price. When I learned about them, it was explicitly stated that Bollinger Bands do not constitute a trading strategy and should not be used as buy and sell signals. However, to a relatively naive trader like myself, it seemed like could work as a way to ensure I could "buy low and sell high". I decided this would be a good chance to get some experience working with financial data and test my intuition.
@@ -501,7 +507,7 @@ ax.legend(handles, labels)
 
 
 
-![png](Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_19_1.png)
+![png](images/Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_19_1.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
@@ -548,7 +554,7 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     
 
 
-![png](Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_25_1.png)
+![png](images/Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_25_1.png)
 
 
 When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.799%, mean = -10.87%).
