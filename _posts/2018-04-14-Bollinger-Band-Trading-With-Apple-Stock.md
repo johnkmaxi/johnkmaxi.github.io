@@ -1,11 +1,4 @@
----
-layout: post
-Title: Testing a Bollinger Band Trading Strategy
-Date: 2018-04-14 23:27
-Category: Finance
-Tags: python, finance, apple, oop
-Author: John Maxi
----
+
 ### Using Bollinger Bands as Trading Strategy?
 
 I recently learned about Bollinger Bands as stock metric. Bollinger Bands show the volaltility of the stock. The bands themselves show the price that is two standard deviations above and below the 20 day rolling mean stock price. When I learned about them, it was explicitly stated that Bollinger Bands do not constitute a trading strategy and should not be used as buy and sell signals. However, to a relatively naive trader like myself, it seemed like could work as a way to ensure I could "buy low and sell high". I decided this would be a good chance to get some experience working with financial data and test my intuition.
@@ -214,7 +207,7 @@ show(p)
 
     <div class="bk-root">
         <a href="https://bokeh.pydata.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
-        <span id="755694f9-7708-4264-a225-dba382dfd5ef">Loading BokehJS ...</span>
+        <span id="e8da9b8a-5813-4f75-94e6-60cfceeaae53">Loading BokehJS ...</span>
     </div>
 
 
@@ -223,7 +216,7 @@ show(p)
 
 
 <div class="bk-root">
-    <div class="bk-plotdiv" id="e18ae39d-22e4-4e0b-ac89-ac0fb1bac737"></div>
+    <div class="bk-plotdiv" id="23e2f731-d9aa-4a67-aa26-da8faf719aee"></div>
 </div>
 
 
@@ -317,7 +310,7 @@ show(p)
 
 
 <div class="bk-root">
-    <div class="bk-plotdiv" id="f5f169bf-576d-4c0c-aa7d-d22f0a76553c"></div>
+    <div class="bk-plotdiv" id="1a7e0789-8bb1-4d25-a1c9-c16036e1964d"></div>
 </div>
 
 
@@ -346,7 +339,7 @@ show(p)
 
 
 <div class="bk-root">
-    <div class="bk-plotdiv" id="853a4e86-41c0-4038-8921-9f2f748bdfd2"></div>
+    <div class="bk-plotdiv" id="bfed3f1a-cff0-4082-b954-75b2229de822"></div>
 </div>
 
 
@@ -380,7 +373,7 @@ show(p)
 
 
 <div class="bk-root">
-    <div class="bk-plotdiv" id="bf29908b-b7b0-4906-a817-7a1dcd668a71"></div>
+    <div class="bk-plotdiv" id="679cbe91-73ba-4b1b-99ff-d96cf658678a"></div>
 </div>
 
 
@@ -448,38 +441,38 @@ appleSim.describe()
     </tr>
     <tr>
       <th>mean</th>
-      <td>10.320151</td>
-      <td>4.491250</td>
+      <td>16.170338</td>
+      <td>5.304509</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>20.613556</td>
-      <td>8.538113</td>
+      <td>32.530624</td>
+      <td>10.086021</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.346936</td>
-      <td>0.776798</td>
+      <td>0.301879</td>
+      <td>0.757848</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.193903</td>
+      <td>1.269655</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>1.869374</td>
-      <td>1.167828</td>
+      <td>2.080421</td>
+      <td>1.085216</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>7.609830</td>
-      <td>3.983599</td>
+      <td>8.035126</td>
+      <td>3.996952</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>126.829769</td>
-      <td>50.202282</td>
+      <td>166.609520</td>
+      <td>50.422122</td>
     </tr>
   </tbody>
 </table>
@@ -491,22 +484,24 @@ On average, I lost out to the buy-and-hold strategy. The mean and median are bot
 
 
 ```python
-%matplotlib
+%matplotlib inline
 import seaborn as sns
-ax = sns.distplot(appleSim['Base'], bins=10, color='red', label='Buy and Hold')
+fig, ax = plt.subplots(figsize=(10,8))
+ax = sns.distplot(appleSim['Base'], bins=10, color='red', label='Buy and Hold', ax=ax)
 ax = sns.distplot(appleSim['Maxi'], bins=10, label='Maxi Bands', axlabel='% Return')
 handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles, labels)
 ```
 
-    Using matplotlib backend: Qt5Agg
-    
+
+
+
+    <matplotlib.legend.Legend at 0x282a38a45c0>
 
 
 
 
-    <matplotlib.legend.Legend at 0x1d92c660e48>
-
+![png](Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_19_1.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
@@ -520,7 +515,7 @@ ttest_ind(appleSim['Base'], appleSim['Maxi'])
 
 
 
-    Ttest_indResult(statistic=2.6124699567427627, pvalue=0.0096785058433234549)
+    Ttest_indResult(statistic=3.1903594925224974, pvalue=0.0016523528654219888)
 
 
 
@@ -542,20 +537,23 @@ Looks like there is rougly a 20% chance of beating the market using my strategy 
 
 
 ```python
-%matplotlib
-(appleSim['Maxi']-appleSim['Base']).plot(kind='bar')
+fig, ax = plt.subplots(figsize=(15,4))
+(appleSim['Maxi']-appleSim['Base']).plot(kind='bar', ax=ax)
 print('median: ', (appleSim['Maxi']-appleSim['Base']).median())
 print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
 ```
 
-    Using matplotlib backend: Qt5Agg
-    median:  -0.34533686174325406
-    mean:  -5.82890019907
+    median:  -0.799093939015471
+    mean:  -10.8658292756
     
 
-When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.345%, mean = -5.83%).
+
+![png](Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_25_1.png)
+
+
+When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.799%, mean = -10.87%).
 
 ### Conclusion
 - My stategy does not work for trading AAPL stock.
-- The return is typically 0.345% less
+- The return is typically 0.799% less
 - The largest returns are possible using a buy-and-hold strategy, 10% return on average
