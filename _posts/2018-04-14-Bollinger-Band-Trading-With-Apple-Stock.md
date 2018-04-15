@@ -211,10 +211,7 @@ show(p)
 
 
 
-    <div class="bk-root">
-        <a href="https://bokeh.pydata.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
-        <span id="e8da9b8a-5813-4f75-94e6-60cfceeaae53">Loading BokehJS ...</span>
-    </div>
+![AAPL Data](/images/Bollinger Band Trading With Apple Stock_files/AAPL-close.png)
 
 
 
@@ -315,9 +312,7 @@ show(p)
 
 
 
-<div class="bk-root">
-    <div class="bk-plotdiv" id="1a7e0789-8bb1-4d25-a1c9-c16036e1964d"></div>
-</div>
+![AAPL Bollinger Bands](/images/Bollinger Band Trading With Apple Stock_files/APPL-boll-bands.png)
 
 
 
@@ -344,9 +339,7 @@ show(p)
 
 
 
-<div class="bk-root">
-    <div class="bk-plotdiv" id="bfed3f1a-cff0-4082-b954-75b2229de822"></div>
-</div>
+![AAPL Maxi Bands](/images/Bollinger Band Trading With Apple Stock_files/APPL-maxi-bands.png)
 
 
 
@@ -378,9 +371,7 @@ show(p)
 
 
 
-<div class="bk-root">
-    <div class="bk-plotdiv" id="679cbe91-73ba-4b1b-99ff-d96cf658678a"></div>
-</div>
+![AAPL Maxi Bands Random Time Frame](/images/Bollinger Band Trading With Apple Stock_files/APPL-maxi-bands-random.png)
 
 
 
@@ -507,7 +498,7 @@ ax.legend(handles, labels)
 
 
 
-![Returns Distribution](images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_19_1.png)
+![Returns Distribution](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_19_1.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
