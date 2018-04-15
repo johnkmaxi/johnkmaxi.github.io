@@ -507,7 +507,7 @@ ax.legend(handles, labels)
 
 
 
-![png](images/Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_19_1.png)
+![Returns Distribution](images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_19_1.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
@@ -554,7 +554,7 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     
 
 
-![png](images/Bollinger%20Band%20Trading%20With%20Apple%20Stock_files/Bollinger%20Band%20Trading%20With%20Apple%20Stock_25_1.png)
+![Difference in Returns](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_25_1.png)
 
 
 When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.799%, mean = -10.87%).
