@@ -490,14 +490,6 @@ handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles, labels)
 ```
 
-
-
-
-    <matplotlib.legend.Legend at 0x282a38a45c0>
-
-
-
-
 ![Returns Distribution](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_19_1.png)
 
 
