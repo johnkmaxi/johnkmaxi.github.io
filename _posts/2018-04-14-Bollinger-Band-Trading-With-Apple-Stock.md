@@ -214,17 +214,6 @@ show(p)
 ![AAPL Data](/images/Bollinger Band Trading With Apple Stock_files/AAPL-close.png)
 
 
-
-
-
-
-<div class="bk-root">
-    <div class="bk-plotdiv" id="23e2f731-d9aa-4a67-aa26-da8faf719aee"></div>
-</div>
-
-
-
-
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
 
 Now that we have the data, I can simulate the Bollinger Band trading strategy. Here's my stategy I want to try:
@@ -310,11 +299,7 @@ p.legend.location = "top_left"
 show(p)
 ```
 
-
-
 ![AAPL Bollinger Bands](/images/Bollinger Band Trading With Apple Stock_files/APPL-boll-bands.png)
-
-
 
 
 Well, look, looks like they advice they gave in the finance course had some merit. It's hard to see on this scale, but my final balance using the Bollinger Bands as a trading strategy is \$20. That is substantially less than the ~24K the buy-and-hold strategy would have earned me. The complete failure of this trading strategy is actually quite surprising to me. There are several parameters that went into this simulation that I can change to tweak my strategy. I'll spare you my exploration and show you that this type of trading strategy can beat the market. The winning combination is to change the window size for rolling mean calculation to 6 days and increasing the `buy_amt` to \$250. I also factored in trading commission. I dub the six day moving window and bands "Maxi Bands".
