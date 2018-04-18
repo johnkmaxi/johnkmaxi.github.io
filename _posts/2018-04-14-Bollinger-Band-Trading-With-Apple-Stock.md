@@ -19,7 +19,7 @@ The first stock I ever traded was Apple, back around 2010-2011. I didn't do a ve
 import quandl
 import datetime
  
-quandl.ApiConfig.api_key = 'wesz_LiK8sqEPe6jFDqs'
+quandl.ApiConfig.api_key = 'your api key'
  
 def quandl_stocks(symbol, start_date=(2000, 1, 1), end_date=None):
     """
