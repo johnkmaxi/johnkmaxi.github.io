@@ -222,7 +222,7 @@ ax.set_title('AAPL Share Price', fontsize=30)
 
 
 
-![AAPL Stock](images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
+![alt text](images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
 
 
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
