@@ -222,8 +222,7 @@ ax.set_title('AAPL Share Price', fontsize=30)
 
 
 
-![AAPL Stock](images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
-
+![AAPL](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
 
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
 
@@ -368,7 +367,7 @@ ax.set_title('Maxi Band Trading', fontsize=30);
 ```
 
 
-![Maxi Strategy](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_14_0.png)
+![Maxi Bands](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_14_0.png)
 
 The "Maxi Bands" trading strategy actually is able to beat the buy-and-hold strategy for apple stock. The reason for this is actually because the price dropped precipitously at toward the end of 2000. This acted as a buy signal for my strategy, and resulted in my overal portfolio (cash + stocks) to preserve value compared to stocks alone. Essentially, I used a small amount of cash to buy stocks when they "went on sale". A second drop happened at the beginning of 2003, allowing me to get a large amount of stock for a low price. In the subsequent years, there were some steep price drops that set off some more buy signals. My balance then got too low to be able to afford to buy any more stocks. Then, there were several several signals and I exchanged shares for cash. The underlying cause of the success was that this strategy resulted in waiting to buy stocks when price went down from where it started, so I bought at close to the market minimum. The key to being successful is to make the `buy_amt` a sizable portion of (50% or more) of the starting balance. If the `buy_amt` is to small, then I can't buy enough shares when the price drops to surpass the baseline strategy of putting all my money into the stock right away.
 
@@ -411,6 +410,7 @@ ax.set_title('Maxi Bands, Random Time Range', fontsize=30);
 
 
 ![Random Timeframe](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_17_0.png)
+
 
 
 Here, my strategy did not work. The buy signal worked well and gave me a boost relative to buy-and-hold. However, the sell signal occurred before the top of the rise and I missed out on some extraordinary growth. Let's run this strategy on 100 different time frames to get an idea of how often it succeeds.
@@ -579,7 +579,6 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
 
 
 ![Difference of Return](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_29_1.png)
-![Difference in Returns](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_25_1.png)
 
 
 When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.799%, mean = -10.87%).
