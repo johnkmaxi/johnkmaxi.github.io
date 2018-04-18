@@ -18,7 +18,7 @@ The first stock I ever traded was Apple, back around 2010-2011. I didn't do a ve
 import quandl
 import datetime
  
-quandl.ApiConfig.api_key = 'your api key'
+quandl.ApiConfig.api_key = 'your quandl key'
  
 def quandl_stocks(symbol, start_date=(2000, 1, 1), end_date=None):
     """
@@ -194,35 +194,24 @@ I always like to visualize the data before doing any analysis to get an over-all
 
 
 ```python
-# use bokeh for interactive plotting
-#from bokeh.plotting import figure, output_notebook, show
-# output to static HTML file
-#output_notebook()
-# create a new plot with a title and axis labels
-#p = figure(title="Apple Stock", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
-# add a line renderer with legend and line thickness
-#p.line(apple_data.index, apple_data['WIKI/AAPL - Adj. Close'], legend="Adj. Close", line_width=2)
-# show the results
-#show(p)
+from bokeh.plotting import figure, output_notebook, show
 
-# use matplotlib for final plots
-%matplotlib inline
-plt.style.use('seaborn-whitegrid')
-fig, ax = plt.subplots(figsize=(12,6))
-apple_data['WIKI/AAPL - Adj. Close'].plot(kind='line', ax=ax,
-                                         fontsize=15,
-                                         rot=0)
-ax.set_ylabel('Share Price ($)', fontsize=20)
-ax.set_xlabel('Data', fontsize=20)
-ax.set_title('AAPL Share Price', fontsize=30)
+# output to static HTML file
+output_notebook()
+
+# create a new plot with a title and axis labels
+p = figure(title="Apple Stock", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
+
+# add a line renderer with legend and line thickness
+p.line(apple_data.index, apple_data['WIKI/AAPL - Adj. Close'], legend="Adj. Close", line_width=2)
+
+# show the results
+show(p)
 ```
 
 
 
-
-
-
-![AAPL Stock](images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
+![AAPL Data](/images/Bollinger Band Trading With Apple Stock_files/AAPL-close.png)
 
 
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
@@ -297,36 +286,20 @@ Remember: if the price breaks the upper band, sell 50% of my shares. If the pric
 a = BollingerBands(apple_data['WIKI/AAPL - Adj. Close'], balance=500, window=20,commission=0)
 a.trade()
 baseline = a.buy_and_hold()
-```
 
-
-```python
 # create a new plot with a title and axis labels
-#p = figure(title="Apple and Bollinger Bands", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
+p = figure(title="Apple and Bollinger Bands", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
 # add a line renderer with legend and line thickness
-#p.line(apple_data.index, a.results['Balance'], legend="Balance", line_width=2, color='red')
-#p.line(apple_data.index, a.results['Shares'], legend="Shares", line_width=2, color='blue')
-#p.line(apple_data.index, baseline, legend="Buy and Hold", line_width=2, color='green')
+p.line(apple_data.index, a.results['Balance'], legend="Balance", line_width=2, color='red')
+p.line(apple_data.index, a.results['Shares'], legend="Shares", line_width=2, color='blue')
+p.line(apple_data.index, baseline, legend="Buy and Hold", line_width=2, color='green')
 # my strategy returns include the value of owned shares and the cash balance
-#p.line(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy', line_width=2, color='black')
-#p.legend.location = "top_left"
-#show(p)
-
-# use matplotlib for final plot
-fig, ax = plt.subplots(figsize=(12,6))
-ax.plot(apple_data.index, a.results['Balance'], label='Balance', c='g')
-ax.plot(apple_data.index, a.results['Shares'], label='Shares', c='k')
-ax.plot(apple_data.index, baseline, label='Buy and Hold', c='b')
-ax.plot(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
-ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
-ax.set_xlabel('Data', fontsize=20)
-ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
-ax.set_title('Bollinger Band Trading', fontsize=30);
+p.line(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy', line_width=2, color='black')
+p.legend.location = "top_left"
+show(p)
 ```
 
-
-![Bollinger Strategy](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_10_0.png)
+![AAPL Bollinger Bands](/images/Bollinger Band Trading With Apple Stock_files/APPL-boll-bands.png)
 
 
 Well, look, looks like they advice they gave in the finance course had some merit. It's hard to see on this scale, but my final balance using the Bollinger Bands as a trading strategy is \$20. That is substantially less than the ~24K the buy-and-hold strategy would have earned me. The complete failure of this trading strategy is actually quite surprising to me. There are several parameters that went into this simulation that I can change to tweak my strategy. I'll spare you my exploration and show you that this type of trading strategy can beat the market. The winning combination is to change the window size for rolling mean calculation to 6 days and increasing the `buy_amt` to \$250. I also factored in trading commission. I dub the six day moving window and bands "Maxi Bands".
@@ -337,38 +310,24 @@ a = BollingerBands(apple_data['WIKI/AAPL - Adj. Close'], balance=500, window=6, 
                   commission=10)
 a.trade()
 baseline = a.buy_and_hold()
-```
 
-
-```python
 # create a new plot with a title and axis labels
-#p = figure(title="Apple and Maxi Bands", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
+p = figure(title="Apple and Maxi Bands", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
 # add a line renderer with legend and line thickness
-#p.line(apple_data.index, a.results['Balance'], legend="Balance", line_width=2, color='red')
-#p.line(apple_data.index, a.results['Shares'], legend="Shares", line_width=2, color='blue')
-#p.line(apple_data.index, baseline, legend="Buy and Hold", line_width=2, color='green')
-#p.line(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy', line_width=2, color='black')
-#p.legend.location = "top_left"
-#show(p)
+p.line(apple_data.index, a.results['Balance'], legend="Balance", line_width=2, color='red')
+p.line(apple_data.index, a.results['Shares'], legend="Shares", line_width=2, color='blue')
+p.line(apple_data.index, baseline, legend="Buy and Hold", line_width=2, color='green')
+p.line(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy', line_width=2, color='black')
+p.legend.location = "top_left"
+show(p)
 ```
 
 
-```python
-# use matplotlib for final plot
-fig, ax = plt.subplots(figsize=(12,6))
-ax.plot(apple_data.index, a.results['Balance'], label='Balance', c='g')
-ax.plot(apple_data.index, a.results['Shares'], label='Shares', c='k')
-ax.plot(apple_data.index, baseline, label='Buy and Hold', c='b', alpha=0.4)
-ax.plot(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
-ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
-ax.set_xlabel('Data', fontsize=20)
-ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
-ax.set_title('Maxi Band Trading', fontsize=30);
-```
+
+![AAPL Maxi Bands](/images/Bollinger Band Trading With Apple Stock_files/APPL-maxi-bands.png)
 
 
-![Maxi Strategy](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_14_0.png)
+
 
 The "Maxi Bands" trading strategy actually is able to beat the buy-and-hold strategy for apple stock. The reason for this is actually because the price dropped precipitously at toward the end of 2000. This acted as a buy signal for my strategy, and resulted in my overal portfolio (cash + stocks) to preserve value compared to stocks alone. Essentially, I used a small amount of cash to buy stocks when they "went on sale". A second drop happened at the beginning of 2003, allowing me to get a large amount of stock for a low price. In the subsequent years, there were some steep price drops that set off some more buy signals. My balance then got too low to be able to afford to buy any more stocks. Then, there were several several signals and I exchanged shares for cash. The underlying cause of the success was that this strategy resulted in waiting to buy stocks when price went down from where it started, so I bought at close to the market minimum. The key to being successful is to make the `buy_amt` a sizable portion of (50% or more) of the starting balance. If the `buy_amt` is to small, then I can't buy enough shares when the price drops to surpass the baseline strategy of putting all my money into the stock right away.
 
@@ -384,33 +343,22 @@ a.trade()
 baseline = a.buy_and_hold()
 
 # create a new plot with a title and axis labels
-#p = figure(title="Maxi Bands, random time range", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
+p = figure(title="Maxi Bands, random time range", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
 # add a line renderer with legend and line thickness
 x = apple_data.loc[start:end].index
-#p.line(x, a.results['Balance'], legend="Balance", line_width=2, color='red')
-#p.line(x, a.results['Shares'], legend="Shares", line_width=2, color='blue')
-#p.line(x, baseline, legend="Buy and Hold", line_width=2, color='green')
-#p.line(x, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy Total', line_width=2, color='black')
-#p.legend.location = 'top_left'
-#show(p)
+p.line(x, a.results['Balance'], legend="Balance", line_width=2, color='red')
+p.line(x, a.results['Shares'], legend="Shares", line_width=2, color='blue')
+p.line(x, baseline, legend="Buy and Hold", line_width=2, color='green')
+p.line(x, a.results['Shares']*a.stock+a.results['Balance'], legend='My Strategy Total', line_width=2, color='black')
+p.legend.location = 'top_left'
+show(p)
 ```
 
 
-```python
-fig, ax = plt.subplots(figsize=(12,6))
-ax.plot(x, a.results['Balance'], label='Balance', c='g')
-ax.plot(x, a.results['Shares'], label='Shares', c='k')
-ax.plot(x, baseline, label='Buy and Hold', c='b', alpha=0.4)
-ax.plot(x, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
-ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
-ax.set_xlabel('Data', fontsize=20)
-ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
-ax.set_title('Maxi Bands, Random Time Range', fontsize=30);
-```
+
+![AAPL Maxi Bands Random Time Frame](/images/Bollinger Band Trading With Apple Stock_files/APPL-maxi-bands-random.png)
 
 
-![Random Timeframe](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_17_0.png)
 
 
 Here, my strategy did not work. The buy signal worked well and gave me a boost relative to buy-and-hold. However, the sell signal occurred before the top of the rise and I missed out on some extraordinary growth. Let's run this strategy on 100 different time frames to get an idea of how often it succeeds.
@@ -527,11 +475,7 @@ handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles, labels)
 ```
 
-
-
-
-
-![Return Distribution](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_23_1.png)
+![Returns Distribution](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_19_1.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
@@ -578,7 +522,6 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     
 
 
-![Difference of Return](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_29_1.png)
 ![Difference in Returns](/images/Bollinger Band Trading With Apple Stock_files/Bollinger Band Trading With Apple Stock_25_1.png)
 
 
