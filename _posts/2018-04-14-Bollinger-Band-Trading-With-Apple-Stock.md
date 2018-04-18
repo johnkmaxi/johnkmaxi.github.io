@@ -219,10 +219,8 @@ ax.set_title('AAPL Share Price', fontsize=30)
 
 
 
-
-
-
 ![AAPL](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_5_1.png)
+
 
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
 
@@ -576,6 +574,8 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     median:  -0.799093939015471
     mean:  -10.8658292756
     
+
+
 ![Difference of Return](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_29_1.png)
 
 
