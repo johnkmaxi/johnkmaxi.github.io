@@ -576,8 +576,6 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     median:  -0.799093939015471
     mean:  -10.8658292756
     
-
-
 ![Difference of Return](/images/Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_29_1.png)
 
 
