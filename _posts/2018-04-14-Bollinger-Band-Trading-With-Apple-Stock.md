@@ -1,12 +1,10 @@
 ---
 Title: Testing a Bollinger Band Trading Strategy
 Date: 2018-04-14 23:27
-Category: Finance
-Tags: python, finance, apple, oop
-Author: John Maxi
 ---
 
 ### Using Bollinger Bands as Trading Strategy?
+Author: John Maxi
 
 I recently learned about Bollinger Bands as stock metric. Bollinger Bands show the volaltility of the stock. The bands themselves show the price that is two standard deviations above and below the 20 day rolling mean stock price. When I learned about them, it was explicitly stated that Bollinger Bands do not constitute a trading strategy and should not be used as buy and sell signals. However, to a relatively naive trader like myself, it seemed like could work as a way to ensure I could "buy low and sell high". I decided this would be a good chance to get some experience working with financial data and test my intuition.
 
