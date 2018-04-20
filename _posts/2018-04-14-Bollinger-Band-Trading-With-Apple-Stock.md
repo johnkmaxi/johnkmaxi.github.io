@@ -193,17 +193,6 @@ I always like to visualize the data before doing any analysis to get an over-all
 
 
 ```python
-# use bokeh for interactive plotting
-#from bokeh.plotting import figure, output_notebook, show
-# output to static HTML file
-#output_notebook()
-# create a new plot with a title and axis labels
-#p = figure(title="Apple Stock", x_axis_label='Date', y_axis_label='Balance',x_axis_type='datetime')
-# add a line renderer with legend and line thickness
-#p.line(apple_data.index, apple_data['WIKI/AAPL - Adj. Close'], legend="Adj. Close", line_width=2)
-# show the results
-#show(p)
-
 # use matplotlib for final plots
 %matplotlib inline
 plt.style.use('seaborn-whitegrid')
@@ -319,7 +308,7 @@ ax.set_title('Bollinger Band Trading', fontsize=30);
 ```
 
 
-![png](Bollinger%20Band%20Trading%20with%20Apple%20Stock_files/Bollinger%20Band%20Trading%20with%20Apple%20Stock_10_0.png)
+![png](Bollinger Band Trading with Apple Stock_files/Bollinger Band Trading with Apple Stock_10_0.png)
 
 
 Well, look, looks like they advice they gave in the finance course had some merit. It's hard to see on this scale, but my final balance using the Bollinger Bands as a trading strategy is \$20. That is substantially less than the ~24K the buy-and-hold strategy would have earned me. The complete failure of this trading strategy is actually quite surprising to me. There are several parameters that went into this simulation that I can change to tweak my strategy. I'll spare you my exploration and show you that this type of trading strategy can beat the market. The winning combination is to change the window size for rolling mean calculation to 6 days and increasing the `buy_amt` to \$250. I also factored in trading commission. I dub the six day moving window and bands "Maxi Bands".
