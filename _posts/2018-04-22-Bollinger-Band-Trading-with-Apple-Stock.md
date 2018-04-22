@@ -214,7 +214,7 @@ ax.set_title('AAPL Share Price', fontsize=30);
 ```
 
 
-![png](/images/output_5_0.png)
+![png](/images/20180422output_5_0.png)
 
 
 Obviously, Apple has done very well. There are some occasional sharp dips in the price, but mostly it just keeps going up. Really wish I would have held on to all three of those shares I purchased back in the day.
@@ -318,7 +318,7 @@ ax.set_title('Bollinger Band Trading', fontsize=30);
 ```
 
 
-![png](/images/im2.png)
+![png](/images/20180422im2.png)
 
 
 Well, look, looks like they advice they gave in the finance course had some merit. It's hard to see on this scale, but my final balance using the Bollinger Bands as a trading strategy is \$20. That is substantially less than the ~24K the buy-and-hold strategy would have earned me. The complete failure of this trading strategy is actually quite surprising to me. There are several parameters that went into this simulation that I can change to tweak my strategy. I'll spare you my exploration and show you that this type of trading strategy can beat the market. The winning combination is to change the window size for rolling mean calculation to 6 days and increasing the `buy_amt` to \$250. I also factored in trading commission. I dub the six day moving window and bands "Maxi Bands".
@@ -360,7 +360,7 @@ ax.set_title('Maxi Band Trading', fontsize=30);
 ```
 
 
-![png](/images/output_14_0.png)
+![png](/images/20180422output_14_0.png)
 
 
 The "Maxi Bands" trading strategy actually is able to beat the buy-and-hold strategy for apple stock. The reason for this is actually because the price dropped precipitously at toward the end of 2000. This acted as a buy signal for my strategy, and resulted in my overal portfolio (cash + stocks) to preserve value compared to stocks alone. Essentially, I used a small amount of cash to buy stocks when they "went on sale". A second drop happened at the beginning of 2003, allowing me to get a large amount of stock for a low price. In the subsequent years, there were some steep price drops that set off some more buy signals. My balance then got too low to be able to afford to buy any more stocks. Then, there were several several signals and I exchanged shares for cash. The underlying cause of the success was that this strategy resulted in waiting to buy stocks when price went down from where it started, so I bought at close to the market minimum. The key to being successful is to make the `buy_amt` a sizable portion of (50% or more) of the starting balance. If the `buy_amt` is to small, then I can't buy enough shares when the price drops to surpass the baseline strategy of putting all my money into the stock right away.
@@ -403,7 +403,7 @@ ax.set_title('Maxi Bands, Random Time Range', fontsize=30);
 ```
 
 
-![png](/images/output_17_0.png)
+![png](/images/20180422output_17_0.png)
 
 
 Here, my strategy did not work. The buy signal worked well and gave me a boost relative to buy-and-hold. However, the sell signal occurred before the top of the rise and I missed out on some extraordinary growth. Let's run this strategy on 100 different time frames to get an idea of how often it succeeds.
@@ -518,7 +518,7 @@ ax.legend(handles, labels);
 ```
 
 
-![png](/images/output_23_0.png)
+![png](/images/20180422output_23_0.png)
 
 
 The histograms show that we are more likely to better returns with the buy-and-hold strategy. My strategy has less risk, as there is a relatively tighter distrubution around the mean return value. Let's do a quick t-test to confirm that the buy-and-hold strategy gives better returns.
@@ -566,7 +566,7 @@ print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
     
 
 
-![png](/images/output_29_1.png)
+![png](/images/20180422output_29_1.png)
 
 
 When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.951%, mean = -9.42%).
