@@ -1,4 +1,8 @@
-
+---
+layout: post
+title: "Bollinger Band Trading with AAPL"
+date: 2018-04-22
+---
 ### Using Bollinger Bands as Trading Strategy?
 
 I recently learned about Bollinger Bands as stock metric. Bollinger Bands show the volaltility of the stock. The bands themselves show the price that is two standard deviations above and below the 20 day rolling mean stock price. When I learned about them, it was explicitly stated that Bollinger Bands do not constitute a trading strategy and should not be used as buy and sell signals. However, to a relatively naive trader like myself, it seemed like could work as a way to ensure I could "buy low and sell high". I decided this would be a good chance to get some experience working with financial data and test my intuition.
@@ -12,7 +16,7 @@ The first stock I ever traded was Apple, back around 2010-2011. I didn't do a ve
 import quandl
 import datetime
  
-quandl.ApiConfig.api_key = 'wesz_LiK8sqEPe6jFDqs'
+quandl.ApiConfig.api_key = 'your api key'
  
 def quandl_stocks(symbol, start_date=(2000, 1, 1), end_date=None):
     """
@@ -307,7 +311,7 @@ ax.plot(apple_data.index, a.results['Shares'], label='Shares', c='k')
 ax.plot(apple_data.index, baseline, label='Buy and Hold', c='b')
 ax.plot(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
 ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
+ax.set_ylabel('Account Value ($)', fontsize=20)
 ax.set_xlabel('Data', fontsize=20)
 ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
 ax.set_title('Bollinger Band Trading', fontsize=30);
@@ -349,7 +353,7 @@ ax.plot(apple_data.index, a.results['Shares'], label='Shares', c='k')
 ax.plot(apple_data.index, baseline, label='Buy and Hold', c='b', alpha=0.4)
 ax.plot(apple_data.index, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
 ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
+ax.set_ylabel('Account Value ($)', fontsize=20)
 ax.set_xlabel('Data', fontsize=20)
 ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
 ax.set_title('Maxi Band Trading', fontsize=30);
@@ -392,7 +396,7 @@ ax.plot(x, a.results['Shares'], label='Shares', c='k')
 ax.plot(x, baseline, label='Buy and Hold', c='b', alpha=0.4)
 ax.plot(x, a.results['Shares']*a.stock+a.results['Balance'], label='My Strategy', c='r')
 ax.legend()
-ax.set_ylabel('Share Price ($)', fontsize=20)
+ax.set_ylabel('Account Value ($)', fontsize=20)
 ax.set_xlabel('Data', fontsize=20)
 ax.tick_params(axis = 'both', which = 'major', labelsize = 15)
 ax.set_title('Maxi Bands, Random Time Range', fontsize=30);
@@ -462,38 +466,38 @@ display(appleSim.describe())
     </tr>
     <tr>
       <th>mean</th>
-      <td>11.720575</td>
-      <td>4.017367</td>
+      <td>14.322065</td>
+      <td>4.906125</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>22.587838</td>
-      <td>7.617922</td>
+      <td>27.743431</td>
+      <td>9.219569</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.611059</td>
-      <td>0.909400</td>
+      <td>0.411201</td>
+      <td>0.919069</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.264927</td>
+      <td>1.411118</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2.120939</td>
-      <td>1.194216</td>
+      <td>3.403295</td>
+      <td>1.417969</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>8.609803</td>
-      <td>3.677988</td>
+      <td>10.219698</td>
+      <td>3.923236</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>123.063425</td>
-      <td>50.447521</td>
+      <td>126.531720</td>
+      <td>40.566067</td>
     </tr>
   </tbody>
 </table>
@@ -508,6 +512,7 @@ import seaborn as sns
 fig, ax = plt.subplots(figsize=(10,8))
 ax = sns.distplot(appleSim['Base'], bins=10, color='red', label='Buy and Hold', ax=ax)
 ax = sns.distplot(appleSim['Maxi'], bins=10, label='Maxi Bands', axlabel='% Return')
+ax.set_ylabel('Density')
 handles, labels = ax.get_legend_handles_labels()
 ax.legend(handles, labels);
 ```
@@ -527,7 +532,7 @@ ttest_ind(appleSim['Base'], appleSim['Maxi'])
 
 
 
-    Ttest_indResult(statistic=3.2315027827361886, pvalue=0.0014422336416543512)
+    Ttest_indResult(statistic=3.2207515756363727, pvalue=0.0014946049556794191)
 
 
 
@@ -550,20 +555,21 @@ Looks like there is rougly a 20% chance of beating the market using my strategy 
 
 ```python
 fig, ax = plt.subplots(figsize=(15,4))
-(appleSim['Maxi']-appleSim['Base']).plot(kind='bar', ax=ax);
+(appleSim['Maxi']-appleSim['Base']).plot(kind='bar', ax=ax)
+ax.set_ylabel('Difference in Return');
 print('median: ', (appleSim['Maxi']-appleSim['Base']).median())
 print('mean: ', (appleSim['Maxi']-appleSim['Base']).mean())
 ```
 
-    median:  -0.6312127773694718
-    mean:  -7.70320839247
+    median:  -0.950747476369914
+    mean:  -9.41593998099
     
 
 
 ![png](/images/output_29_1.png)
 
 
-When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.631%, mean = -7.70%).
+When my strategy does beat the market, it is not by much. And when it loses, the difference tends be sizable (median = -0.951%, mean = -9.42%).
 
 ### Conclusion
 - My stategy does not work for trading AAPL stock.
