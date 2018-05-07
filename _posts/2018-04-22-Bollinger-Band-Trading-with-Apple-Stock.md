@@ -11,8 +11,8 @@ For this investigation, I'll need to get my hands on some historical stock data.
 
 The first stock I ever traded was Apple, back around 2010-2011. I didn't do a very good job with it. I bought maybe three shares, waited a few weeks and then sold one of them. Then when the price kept going up, I sold another one. I made a little bit of money, but then the price kept going up and I never reinvested. I'm going to start by testing my strategy on Apple to see if I could have done better. Let's grab the data.
 
+
 {% highlight python linenos %}
-```python
 import quandl
 import datetime
  
@@ -45,8 +45,8 @@ def quandl_stocks(symbol, start_date=(2000, 1, 1), end_date=None):
             order='asc'
             )
 apple_data = quandl_stocks('AAPL')
-```
 {% endhighlight %}
+
 
 Here's what it looks like:
 
