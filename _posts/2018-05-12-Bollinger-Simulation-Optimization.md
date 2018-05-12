@@ -1,4 +1,8 @@
-
+---
+layout: post
+title: "Bollinger Band Trading with GE"
+date: 2018-05-12
+---
 # Can I Beat the Stock Market? A Simulation and Analysis
 
 I have always been intrigued by the idea of being an active stock investor. The allure of developing a strategy to beat the market with some fancy algorithm while I travel the world with my family seems pretty great! To this end, I recently started the [Machine Learning for Trading](https://www.udacity.com/course/machine-learning-for-trading--ud501) course at Udacity. One of the concepts covered early on in this class are Bollinger Bands (BB). BBs use a 20-day rolling mean of the stock price to compute the an upper and lower price band indicating the price that is two standard deviations above or below the rolling mean. When the daily price exceeds these bands it indicates that the price is relatively high or low and is likely to regress towards the 20-day mean. I could see the riches in my mind's eye - it seems like such an easy way to execute the age old mantra of "buy low, sell high". When price dips below the lower band, buy, and when it rises past the upper band, sell. Easy, right? I decided to test this strategy strategy and which gave me the opportunity to practice using APIs to acces data, creating my own datasets, and building and importing my own modules. 
