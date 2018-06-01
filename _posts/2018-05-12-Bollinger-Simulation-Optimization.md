@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bollinger Band Trading with GE"
+title: "Stock Market Simulator - How to Make Sure I Don't Lose It All"
 date: 2018-05-12
 ---
 # Can I Beat the Stock Market? A Simulation and Analysis
