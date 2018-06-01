@@ -281,7 +281,7 @@ fig.tight_layout();
 ```
 
 
-![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_files/Predicting-Stock-Price_10_0.png)
+![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_10_0.png)
 
 
 Our visualizations show that there is a lot of fluctuation in the day to day return of the stock. On this scale no apparaent pattern or trends are clearly evident. We should also notice that there is no separation of days when the price went up or down using our two input features. This is a big red flag indicating that that we aren't likely to have good model performance, especially with a linear-type model we are using here. We would want to pick a model that has more parameters or can learn non-linear features (such as an artifical neural network or a decision tree/random forest).
@@ -387,7 +387,7 @@ for tick in a.get_yticklabels():
 ```
 
 
-![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_files/Predicting-Stock-Price_22_0.png)
+![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_22_0.png)
 
 
 What stands out from this plot, is that the predicted values are on a much smaller scale than the target values. This gives us a nice visual explanation of why our model did worse than the baseline model of just predicting the mean of the training data targets. 
@@ -421,7 +421,7 @@ fig.tight_layout();
 ```
 
 
-![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_files/Predicting-Stock-Price_24_0.png)
+![png](/images/Predicting-Stock-Price_files/Predicting-Stock-Price_24_0.png)
 
 
 First, note that there isn't any relationship between either of our predictor variables X1 or X2 with Y. That isn't necessarily a bad thing, as features that are independent of each other tend to give better model performance. However, this linear model isn't able to derive any useful information from these features. Second, the histogram in the bottom panel really shows how small the variability of our model predictions are. they essentially only predicted the mean (although slightly worse, as mention above). 
