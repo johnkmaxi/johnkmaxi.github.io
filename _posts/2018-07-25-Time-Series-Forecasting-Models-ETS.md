@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Time-Series-Forecast_Models-ETS"
+title: "Time Series Forecast Models ETS"
 date: 2018-07-25
 ---
 # Time Series Forecasting Models: ETS

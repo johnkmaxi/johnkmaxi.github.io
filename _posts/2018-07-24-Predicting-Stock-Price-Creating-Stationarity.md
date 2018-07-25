@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Predicting-Stock-Price-Creating-Stationarity"
+title: "Predicting Stock Price Creating Stationarity"
 date: 2018-07-24
 ---
 # How to build time series models - Accounting for Non-Stationary Data

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Time-Series-Forecasting-Holt-Winter's-with-Python"
+title: "Time Series Forecasting Holt Winter's with Python"
 date: 2018-07-23
 ---
 Predicting the furture values of time series can be valuable for many different reasons. It allows business to forecast spending, employment needs, or future sales. Often, a simple linear regression can not deal with the underlying seasonality component of time series data. For example, champagne sales would be expected to peak near New Year's Eve each year. In order to capture the seasonality component, we can use Holt Winter's Exponential Smoothing Model to make time series predictions with seasonality components. We will compare our results with a lienar regression to illustrate the differences.
