@@ -5,7 +5,7 @@ date: 2018-07-25
 ---
 # Time Series Forecasting Models: ETS
 
-In this post, you will learn the steps to create two different models for time series forecasting. Using these models, you will be able to make predictions for the future values of things like hotel bookings, product sales, and any other times series, using only historical data of that value. Let's get started!
+In this post, you will learn the steps to create ETS models for time series forecasting. Using these models, you will be able to make predictions for the future values of things like hotel bookings, product sales, and any other times series, using only historical data of that value. Let's get started!
 
 ## ETS Models
 
