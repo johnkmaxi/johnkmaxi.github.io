@@ -292,4 +292,4 @@ plt.show()
 
 In this post, you have learned how to create and evaluate an ETS time series model to forecast the future! You should now be able to apply these concepts to new datasets. Try creating an additive model with this same dataset. How do your results compare?
 
-In our next post, we will walk through creating an ARIMA model with this same dataset and compare their performances.
+In our next [post](https://johnkmaxi.github.io/blog/2018/07/25/Time-Series-Forecasting-Models-ARIMA), we will walk through creating an ARIMA model with this same dataset and compare their performances.
